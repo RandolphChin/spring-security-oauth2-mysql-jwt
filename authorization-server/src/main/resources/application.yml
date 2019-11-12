@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/auth?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+
+  session:
+    store-type: redis
+  redis:
+    host: 10.1.225.228
+    port: 4444
+
+application:
+  security:
+    oauth:
+      loginProcessingUrl: /authorization/form
