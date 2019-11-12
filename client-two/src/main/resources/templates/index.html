@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+</head>
+<body>
+<h3><span th:text="${#authentication.name}"></span> | <a th:href="@{/logout}">退出</a> </h3>
+<h2>这是client two页面</h2>
+<h2><a href="http://localhost:8081/clientOne/list">go to clientOne</a></h2>
+</body>
+</html>

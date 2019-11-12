@@ -1,0 +1,27 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /clientTwo
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8000/oauth/check_token
+      jwt:
+        key-uri: http://localhost:8000/oauth/token_key
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArgNO1Gp7I48dz+Dp5/sOEF53BjQ/X6o4wvTzmVaENchHiHPr9IfPsMR/qMloC1U60XUUKdhmbCKORqBLFJDtu4F4QMq/h/oymMLkRIa+dnj2QEvSj4xcgVuvwH4f4AHr71AaJyW1zu7Z7AH20JQkU5QZ+zCLd8WnT17sxMYgfGThkLq3xGOiXjGY0qAtN4KWhwJEAMIATiw/akLQL+p/iQMHwiaoNRvcas9C0hA4FYfcjoEobwu07bDZmM2Dl3eP/pCdFPMjyyMKM9zwfq0oMxLmxGSMQQdCz0hBio8IUkGzKAAtkdFPu8S5zx3+n4rCzYGN0/pw3KSrRFNTf3omlwIDAQAB
+          -----END PUBLIC KEY-----
+    client:
+      access-token-uri: http://localhost:8000/oauth/token
+      client-id: clientTwo
+      client-secret: clientTwo
+      grant-type: authorization_code,refresh_token
+      scope: all
+      user-authorization-uri: http://localhost:8000/oauth/authorize

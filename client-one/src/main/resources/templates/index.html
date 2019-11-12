@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<body>
+<h3>clientOne</h3>
+<button id="one">getCode</button>
+<button id="two">getResource</button>
+    <a href="http://localhost:8082/clientTwo/list">go to clientTwo</a>
+</div>
+</body>
+<h3>当前登录用户：<span th:text="${#authentication.name}"></span> | <a th:href="@{/logout}">退出</a></h3>
+<script>
+    $("#one").click(function(){
+       // location.href="http://localhost:8081/getCode"
+        location.href="http://localhost/cross_origin"
+    });
+    $("#two").click(function(){
+        var token="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VPbmUiXSwidXNlcl9uYW1lIjoiYWRtaW4iLCJzY29wZSI6WyJhbGwiXSwib3JnYW5pemF0aW9uIjoiYWRtaW4iLCJleHAiOjE1NzI1NDgwMDIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiODA5ODdlMjAtN2ZlOS00MGU4LWI2ZmQtNzE4ZDcwZmExMzVlIiwiY2xpZW50X2lkIjoib2F1dGgyIn0.Y6xZ7Rl2cSuNxeQ2b-sfqfSEB72eKMmRQzUZFMSls5OAcF9Bh8fnDYXpyuiP7R69fvvklpPtDybc3SacTv6xFqlMj7nLL6Wu3-aUYbVe9QuiVvER8SiHtkXoez9BecEK_HtNGzR1hRXZ-LLDseIgciIKYmO8XIgWRy820IbqGdJ9ZpFJvo_IN3iZheRExNoG8-gjXKK7X5wG05Y8__4pnAx6phK9rdgibHCUdc5g0M3h_Bvv8R-XOt_3tSc4saz3T06ZtFSMgrEEQM3e4alsz5fVOBlfehh8iQvTOV-Op_NR-BgKM9W8Bx3CPZQYyfwQnef2e9fC_xojuwrgJ2o9uw";
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost/cross_origin/auth/me",
+            headers: {
+                "Authorization": "Bearer "+token
+            },
+
+            success:function(msg){
+                debugger;
+                console.log(msg);
+
+            }
+        })
+    });
+</script>
+</html>
