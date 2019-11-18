@@ -35,6 +35,5 @@
         <!--指定optional为true可以避免被repackage打war时devtools也被打进war包-->
        <optional>true</optional>
    </dependency>
-
 </dependencies>
 </project>
