@@ -145,6 +145,23 @@ AuthorizationServerEndpointsConfigurer.userDetailsService(userDetailsService)
 其中的 End point，已经通过Spring 的注解 @FrameworkEndpoint 实现了
 token产生时，client 的相关信息通过 ClientDetailsService 注册到了 Authorization Server
 
+token存储在 redis中，部分key解释
+
+redis(windows 3.2 edition)中的key代表的意思
+
+>access_to_refresh:d92d9c69-0cb2-4145-9a27-413492631385
+
+存储的d92d9c69-0cb2-4145-9a27-413492631385为access_token， value 为 access_token 对应的 refresh_token
+
+>refresh:37a596e2-6e8d-4105-ac31-565cc7bb09fd
+
+存储的 value 为序列化的 DefaultExpiringOAuth2RefreshToken 信息，该类用于生成refresh_token
+
+>refresh_auth:845821a9-e730-42b4-9a80-e9cf2bfcc2a3
+
+存储的 value 为序列化的 OAuth2Authentication 信息
+
+
 #### 创建客户端信息表
 ```
 create table if not exists oauth_client_details (
